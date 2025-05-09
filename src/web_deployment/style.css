@@ -1,0 +1,47 @@
+/* src/web_deployment/style.css */
+/* Using Tailwind CSS primarily, so this file can be minimal or for overrides */
+
+body {
+    transition: background-color 0.3s ease;
+}
+
+#outputCanvas {
+    display: block; /* Remove extra space below canvas */
+    background-color: #e0e0e0; /* Light gray background for canvas before image load */
+    border: 1px solid #ccc;
+}
+
+/* Add any additional custom styles here if Tailwind isn't enough */
+
+.status-message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.status-loading {
+    background-color: #e0f2fe; /* light blue */
+    border: 1px solid #7dd3fc; /* blue border */
+    color: #0c4a6e; /* dark blue text */
+}
+
+.status-ready {
+    background-color: #dcfce7; /* light green */
+    border: 1px solid #86efac; /* green border */
+    color: #166534; /* dark green text */
+}
+
+.status-error {
+    background-color: #fee2e2; /* light red */
+    border: 1px solid #fca5a5; /* red border */
+    color: #991b1b; /* dark red text */
+}
+
+/* Ensure the loader is centered within its container if it's part of statusSection */
+#statusSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
