@@ -25,7 +25,7 @@ Building the Docker Image
     with your preferred image name and tag.
 
     ```bash
-    docker build -t yolov12-onnx-env:latest .
+    docker build -f docker/Dockerfile -t yolov12-onnx-env:latest .
     ```
 
     This process might take some time, especially the first time, as it downloads
@@ -47,19 +47,11 @@ project's root directory on your host machine.
    task, you can run the container without GPU access:
 
    ```bash
-   docker run -it --rm \
-       -v /path/to/your/yolov12_onnx_project/data:/app/data \
-       -v /path/to/your/yolov12_onnx_project/trained_models:/app/trained_models \
-       -v /path/to/your/yolov12_onnx_project/logs:/app/logs \
-       yolov12-onnx-env:latest
+   docker run -it -p 8000:8000 --shm-size 128gb --rm yolov12-onnx-env:latest
    ```
 
    * `-it`: Runs the container in interactive mode with a pseudo-TTY.
    * `--rm`: Automatically removes the container when it exits.
-   * `-v /host/path:/container/path`: Mounts a volume.
-     * We mount `data` to `/app/data` inside the container.
-     * We mount `trained_models` to `/app/trained_models`.
-     * We mount `logs` to `/app/logs`.
    * `yolov12-onnx-env:latest`: The name and tag of the image to use.
 
    This will drop you into a `bash` shell inside the container, in the `/app` directory.
@@ -70,11 +62,7 @@ project's root directory on your host machine.
    Container Toolkit on the host):
 
    ```bash
-   docker run -it --rm --gpus all \
-       -v /path/to/your/yolov12_onnx_project/data:/app/data \
-       -v /path/to/your/yolov12_onnx_project/trained_models:/app/trained_models \
-       -v /path/to/your/yolov12_onnx_project/logs:/app/logs \
-       yolov12-onnx-env:latest
+   docker run -it -p 8000:8000 --shm-size 128gb --rm --gpus all yolov12-onnx-env:latest
    ```
 
    * `--gpus all`: This flag (provided by the NVIDIA Container Toolkit) grants the
@@ -150,3 +138,7 @@ generation and benchmarking within this Docker environment, and then separately
 serve the `src/web_deployment` directory (e.g., using `python -m http.server`
 on your host machine, or deploying it to a static web host) for the browser-based
 demo.
+
+Here is a screenshot of how the web version looks ==>
+
+![Web Model Run Screenshot](../data/web_model_run_ss.png)

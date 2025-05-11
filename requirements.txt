@@ -2,7 +2,8 @@
 torch>=1.10.0
 torchvision>=0.11.0 # Or versions compatible with your YOLOv12 and CUDA
 onnx>=1.10.0
-onnxruntime>=1.10.0 # onnxruntime-gpu if you have a CUDA-enabled GPU and want GPU support
+onnxruntime>=1.10.0
+onnxruntime-gpu
 onnxruntime-tools # For quantization and other utilities
 ultralytics # If using Ultralytics for YOLO training/export. Adjust if your YOLOv12 source is different.
 
@@ -21,5 +22,3 @@ pycocotools # For COCO evaluation metrics (mAP)
 tensorboard # For visualizing training
 tqdm # For progress bars
 
-# For web deployment (local server, not a Python dependency for the browser)
-# http.server (Python built-in)
