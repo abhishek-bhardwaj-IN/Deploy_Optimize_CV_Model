@@ -24,11 +24,6 @@ Deploy_Optimize_CV_Model/
 │   ├── train/
 │   │   ├── images/
 │   │   └── labels/
-│   ├── valid/
-│   │   ├── images/
-│   │   └── labels/
-│   ├── test_images/
-│   ├── calibration_data.yaml
 │   └── data.yaml
 │
 ├── src/
